@@ -15,7 +15,8 @@
                 My Tasks
             </div>
             <div class="detail">
-                <div class="task">
+                <button class="button" id="myBtn">+</button>
+                <!-- <div class="task">
                     <div class="message-symbol">
                         <i class="fas fa-comments"></i>
                     </div>
@@ -35,55 +36,30 @@
                             </span>
                         </div>
                     </div>
-                </div>
-                <!-- wwwwwwwwww -->
-                <div class="task">
-                        <div class="message-symbol">
-                            <i class="fas fa-comments"></i>
+                </div> -->
+            </div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">     
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="modal-body">
+                        <div class="modal-task-name">
+                            <label for="task-name">Task name</label>
+                            <input type="text" id="task-name"/>
                         </div>
-                        <div class="message-discription">
-                            <div class="title">
-                                High Priority
-                            </div>
-                            <div class="discription">
-                                hii my name is mehul. Next atsk is to attenklhbjn kmllllll lllllllllllll lllllllll llllllld interview in syook.kfwmolfmw qmflqfmwql kfmlqwfmklfmkl wqmfklmwflkmk lfwmqklfmw qm
-                            </div>
-                            <div class="edit-task">
-                                <span class="edit">
-                                    edit
-                                </span>
-                                <span class="delete">
-                                    delete
-                                </span>
-                            </div>
+                        <div class="modal-task-detail">
+                            <label for="task-discription">Task detail</label>
+                            <textarea name="task-discription" id="task-discription" cols="30" rows="10"> </textarea>
                         </div>
                     </div>
-                    <!-- wwwwwwwwwwwwwwwww -->
-                    <div class="task">
-                            <div class="message-symbol">
-                                <i class="fas fa-comments"></i>
-                            </div>
-                            <div class="message-discription">
-                                <div class="title">
-                                    High Priority
-                                </div>
-                                <div class="discription">
-                                    hii my name is mehul. Next atsk is to attenklhbjn kmllllll lllllllllllll lllllllll llllllld interview in syook.kfwmolfmw qmflqfmwql kfmlqwfmklfmkl wqmfklmwflkmk lfwmqklfmw qm
-                                </div>
-                                <div class="edit-task">
-                                    <span class="edit">
-                                        edit
-                                    </span>
-                                    <span class="delete">
-                                        delete
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- wwwwwwwwwwwwwwww -->
-                <button class="button">+</button>
+                    <div>
+                        <button id="submit-task" >Submit</button>
+                    </div>
+                </div>  
             </div>
         </div>
     </div>
+    <script src="tasklist.js"></script>
 </body>
 </html>
