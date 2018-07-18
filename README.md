@@ -1,3 +1,3 @@
 # MyTasks
-clone the project
-run index.html in browser
+clone the project.
+And run index.html in browser
