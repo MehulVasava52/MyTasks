@@ -33,8 +33,46 @@ body, html {
 .tasklist-container{
     width: 35%;
 }
+.searchbar {
+    border-bottom: 1px solid #d49d9d78;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    height: 70px;
+    background-color: #105a5a;
+}
+.searchbox {
+    width: 50%;
+    position: relative;
+    margin-left: 10px;
+    height: 30px;
+    background-color: #ffffffd6;
+    border-radius: 5px;
+}
+#searchicon {
+    transform: scale(1.5,1.5);
+    position: relative;
+    bottom: 0px;
+    right: 25px;
+    color: #036e6e;
+}
+.hide {
+    display: none;
+}
+button,.edit,.delete:hover {
+    cursor: pointer;
+}
+#fields-check-msg {
+    margin-left: 10px;
+}
+#empty-msg {
+    color: #b31010;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 25%;
+}
 .detail {
-    height: 500px;
+    height: 460px;
     overflow-y: auto;
     background-color: #f5d6b3f2;
     border-bottom-left-radius: 15px;
@@ -64,7 +102,7 @@ body, html {
     border: none;
     color: white;
     position: absolute;
-    top: 120px;
+    top: 141px;
     left: calc(100% - 40%);
     box-shadow: 1px 0px grey;
     z-index: 3;
@@ -111,7 +149,7 @@ body, html {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 5; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 10%; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -122,19 +160,26 @@ body, html {
     font-size: 1.5rem;
 }
 
+label {
+    margin-right: 10px;
+}
 /* Modal Content */
 .modal-content {
     position: relative;
     background-color: #fefefe;
     margin: auto;
+    font-size: 1.7rem;
+    color: #d83f10;
     padding: 10px;
     border: 1px solid #888;
-    width: 50%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    width: 30%;
+    padding: 35px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
 }
 
 /* Add Animation */
@@ -161,12 +206,30 @@ body, html {
     text-decoration: none;
     cursor: pointer;
 }
-
+#task-name {
+    width: 50%;
+}
 .modal-task-detail {
     margin-top: 10px;
+    display: flex;
+}
+.submit-btn-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #submit-task {
     margin-top: 10px;
+    background-color: #0a7777;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 .modal-body {padding: 2px 16px;}
 

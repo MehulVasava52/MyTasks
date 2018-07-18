@@ -7,13 +7,14 @@ else document.attachEvent('onreadystatechange', function(){
     if (document.readyState=='complete') init();
 });
 function init() {
-    debugger;
    if(localStorage.taskListStored){
        taskList=JSON.parse(localStorage.getItem('taskListStored'));
         taskList.forEach(function(task){
             populateTasks(task.name, task.discription,true,task.id);
         });
     }
+
+    if(taskList.length==0)  showMsg(document.getElementById('empty-msg'),'No Tasks Available');
     //check for the tasks
     var modal = document.getElementById('myModal');
 
@@ -23,6 +24,7 @@ function init() {
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
+    var search = document.getElementById("search");
     // When the user clicks the button, open the modal 
     btn.onclick = function() {
         modal.style.display = "block";
@@ -34,6 +36,22 @@ function init() {
         modal.style.display = "none";
     }
 
+    $("#search").on("keyup", function() {
+        var reasultFound = false; 
+        if(taskList.length!=0)
+        {  
+            let value = $(this).val().toLowerCase();
+            $(".detail .task .title").filter(function() {
+                let parent = $(this).parent().parent(); 
+                if($(this).text().indexOf(value) > -1) reasultFound = true;
+                parent.toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+            if(!reasultFound)
+            showMsg(document.getElementById('empty-msg'),'No Match Found');
+            else hideMsg(document.getElementById('empty-msg'));
+        }
+    });
+
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
@@ -44,6 +62,14 @@ function init() {
     editOrDeleteTask();
 }
 
+function hideMsg(element){
+    element.classList.add("hide");
+}
+
+function showMsg(element,msg){
+    element.innerText = msg;
+    element.classList.remove("hide");
+}
 
 var taskList = [];
 var totalTasks = 0;
@@ -53,9 +79,15 @@ function submitButttonListener(taskNameElement,taskDetailElement){
     var modal = document.getElementById('myModal');
     var duplicateEntry = false;
     submit.onclick = function(){
-        modal.style.display = "none";
         let taskName = document.getElementById("task-name");
         let taskDetail = document.getElementById("task-discription");
+        debugger;
+        if(taskName.value == '' ||taskDetail.value=='') {
+            showMsg(document.getElementById('fields-check-msg'),'Please fill all the fields');
+            return;
+        }
+        else  hideMsg(document.getElementById('fields-check-msg'));
+        modal.style.display = "none";
         if(taskNameElement!= undefined && taskDetailElement!= undefined)
         {
             // setting target values for edit 
@@ -78,22 +110,20 @@ function submitButttonListener(taskNameElement,taskDetailElement){
             // for duplicate entries
             if(task.name == taskName.value){
                 duplicateEntry = true;
+                alert('duplicate entry not allowed.');
                 return;
             }
         });
         if(!duplicateEntry){
-            // let divToBeAppended = '<div class="task"><div class="message-symbol"><i class="fas fa-comments"></i></div><div class="message-discription"><div class="title" id="'+totalTasks+'">'+taskName.value
-            // +'</div><div class="discription">'+taskDetail.value+'</div><div class="edit-task"><span class="edit"> edit </span> <span class="delete">delete</span></div></div></div>'
-            // let parentDiv = document.getElementsByClassName("detail")[0];
-            // let childDiv = document.createElement("div");
-            // childDiv.innerHTML = divToBeAppended;
-            // parentDiv.appendChild(childDiv);
-            // taskList.push(taskStructure(taskName.value,taskDetail.value));
-            // totalTasks++;
-            // localStorage.setItem("taskListStored", JSON.stringify(taskList));
-            // localStorage.setItem("totalTasksStored", totalTasks);
             populateTasks(taskName.value,taskDetail.value);
         }
+        clearPopUpFields(taskName,taskDetail);
+    }
+    hideMsg(document.getElementById('empty-msg'));
+}
+function clearPopUpFields(){
+    for(let i=0;i<arguments.length;i++){
+        arguments[i].value = null;
     }
 }
 function populateTasks(taskNameValue,taskDetailValue,onReload,id){
@@ -123,7 +153,7 @@ function editOrDeleteTask() {
         var modal = document.getElementById('myModal');
         let taskNameElement = target.parentElement.parentElement.children[0];
         let taskDetailElement = target.parentElement.parentElement.children[1];
-        debugger;
+        // debugger;
         if(target.className === 'edit' )
         {
           modal.style.display = "block";
@@ -141,8 +171,8 @@ function editOrDeleteTask() {
                 }
             });
             console.log(taskList);
+            if(taskList.length==0)  showMsg(document.getElementById('empty-msg'),'No Tasks Available');
         }
         localStorage.setItem("taskListStored", JSON.stringify(taskList));
     });
-    // console.log(localStorage.getItem("taskListStored"));
 }

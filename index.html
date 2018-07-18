@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <title>Document</title>
 </head>
@@ -14,35 +15,23 @@
             <div class="header">
                 My Tasks
             </div>
+            <div class="searchbar">
+                    <input type="text" class="searchbox" id="search">
+                    <i class="fas fa-search" id="searchicon"></i>
+                </div>
             <div class="detail">
                 <button class="button" id="myBtn">+</button>
-                <!-- <div class="task">
-                    <div class="message-symbol">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <div class="message-discription">
-                        <div class="title">
-                            High Priority
-                        </div>
-                        <div class="discription">
-                            hii my name is mehul. Next atsk is to attenklhbjn kmllllll lllllllllllll lllllllll llllllld interview in syook.kfwmolfmw qmflqfmwql kfmlqwfmklfmkl wqmfklmwflkmk lfwmqklfmw qm
-                        </div>
-                        <div class="edit-task">
-                            <span class="edit">
-                                edit
-                            </span>
-                            <span class="delete">
-                                delete
-                            </span>
-                        </div>
-                    </div>
-                </div> -->
+                <div id="empty-msg" class="hide">
+                    No Tasks Available!!!
+                </div>
             </div>
             <!-- The Modal -->
             <div id="myModal" class="modal">     
                 <!-- Modal content -->
                 <div class="modal-content">
-                    <span class="close">&times;</span>
+                    <div>
+                        <span class="close">&times;</span>
+                    </div>
                     <div class="modal-body">
                         <div class="modal-task-name">
                             <label for="task-name">Task name</label>
@@ -50,11 +39,12 @@
                         </div>
                         <div class="modal-task-detail">
                             <label for="task-discription">Task detail</label>
-                            <textarea name="task-discription" id="task-discription" cols="30" rows="10"> </textarea>
+                            <textarea name="task-discription" id="task-discription" cols="40" rows="10"> </textarea>
                         </div>
-                    </div>
-                    <div>
-                        <button id="submit-task" >Submit</button>
+                        <div class="submit-btn-container">
+                            <button id="submit-task" >Submit</button>
+                            <span id="fields-check-msg" class="hide"></span>
+                        </div>
                     </div>
                 </div>  
             </div>
